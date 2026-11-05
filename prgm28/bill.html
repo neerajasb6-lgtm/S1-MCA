@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Electricity Bill</title>
+</head>
+<body>
+
+<h2>Electricity Bill Calculation</h2>
+
+<form method="post">
+    Enter Units Consumed:
+    <input type="number" name="units" required>
+    <br><br>
+
+    Enter Tariff Rate:
+    <input type="number" step="any" name="rate" required>
+    <br><br>
+
+    <input type="submit" name="submit" value="Calculate Bill">
+</form>
+<?php
+if(isset($_POST['submit']))
+{
+    $units = (int)$_POST['units'];
+    $rate = (float)$_POST['rate'];
+
+    $total = $units * $rate;
+
+    echo "<h2>Electricity Bill</h2>";
+    echo "Units Consumed: ".$units." kWh<br>";
+    echo "Tariff Rate: $".number_format($rate, 2)." per kWh<br>";
+    echo "Total Cost: $".number_format($total, 2);
+}
+?>
+</body>
+</html>
